@@ -18,9 +18,8 @@ import java.util.concurrent.Executors;
 public class server{
 
     ServerSocket serverSocket;// server Socket
-    //ExecutorService pool = Executors.newFixedThreadPool(100); 
 
-    public static int PORT = 8004;
+    public static int PORT = 8004;//setting port numbers
 
     public sever() {
         
@@ -36,14 +35,11 @@ public class server{
         
         
         for (int i=0;i<=100;i++) {
-            
-            //pool.execute(new myThread(serverSocket));
 
             myThread task = new myThread(serverSocket);
             Thread thread = new Thread(task);
             thread.start();
 
-            //new myThread(serverSocket).start();
             }
 
         }
@@ -85,7 +81,7 @@ public void run() {
         while(true) {
             try {
 
-                //System.out.println("### Thread ### "+Thread.currentThread().getName());
+                //System.out.println("### Thread ### "+Thread.currentThread().getName());//this line is for test
 
                 Socket client=null;//client Socket
                 client=serverSocket.accept();//client connect to server
@@ -144,26 +140,19 @@ public void run() {
                         
 
                             out.close();
-                            
-                            
-                            
                             closeSocket(client);
                        // }
                     } catch(Exception e) {
                         System.out.println("HTTP server :"+e.getLocalizedMessage());
                     }
                 }
-                //System.out.println(client+"connected to HTTP server");//如果加入这一句,服务器响应速度会很慢
             } catch(Exception e) {
                 System.out.println("HTTP server :"+e.getLocalizedMessage());
             }
         }
     }
     
-    /**
-     * close client socket and print
-     * socket client socket.
-     */
+   
     void closeSocket(Socket socket) {
         try {
             socket.close();
@@ -173,24 +162,11 @@ public void run() {
                             System.out.println(socket + "leave the HTTP server");        
     }
     
-    /**
-     * read a file content and return to browser
-     * @param fileName
-     * @param socket client socket.
-     */
-   
     
-    /**
-     * print
-     */
     private static void usage() {
         System.out.println("Usage: java HTTPServer <port>\nDefault port is 80.");
     }
 
-
-   
-  
-    
     
     
     void fileReaderAndReturn(String fileName, Socket socket) throws IOException {  
@@ -221,13 +197,6 @@ public void run() {
         	out.println("<h1>400error！</h1>" + "invalid request");
             out.close();
         }
-        /*
-         if (flag=="172.20.10.11") {    
-        	out.println("<h1>403error！</h1>" + "Forbidden");
-            out.close();
-        }
-          
-        */  
           
        if (fileToSend.exists() && !fileToSend.isDirectory()) {  
         // http protocol head
@@ -266,20 +235,10 @@ public void run() {
         } else {  
             out.println("<h1>404error！</h1>" + "file not exits");
             out.close();
-          
-          
         }  
           
           
     }
-          
-
-
-
-
-
-
-
 }
 
 
