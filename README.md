@@ -1,5 +1,5 @@
 # simpleMultithreadWebServer
-This is a simple multithread web server. I complete it in Java. This code actually is short but enables several visitors access our websites(or just a html file) at the same time.
+This is a simple multithread web server. I complete it in Java. This code is simple but enables several visitors access our websites(or just a html file) at the same time.
 
 By the way, the default website file's name is "index.html". But I dodn't contain it here. If you want test this code, you might have to make a new "index.html" file in your computer.
 
